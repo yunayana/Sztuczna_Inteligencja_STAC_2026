@@ -1,0 +1,238 @@
+SIECI KOMPUTEROWE — NOTATKI Z WYKŁADÓW
+Akademia Nauk Stosowanych (ANS)
+Rok akademicki 2025/2026
+
+====================================================
+WYKŁAD 1: MODEL OSI I MODEL TCP/IP
+====================================================
+
+Model OSI (Open Systems Interconnection) — 7-warstwowy model referencyjny:
+
+Warstwa 7 — Aplikacji: HTTP, HTTPS, FTP, SMTP, DNS, SSH
+Warstwa 6 — Prezentacji: szyfrowanie SSL/TLS, kodowanie danych (ASCII, JPEG)
+Warstwa 5 — Sesji: nawiązywanie i zarządzanie sesjami (NetBIOS, RPC)
+Warstwa 4 — Transportowa: TCP (niezawodny), UDP (bezpołączeniowy), porty
+Warstwa 3 — Sieciowa: IP (routing), ICMP, ARP
+Warstwa 2 — Łącza danych: Ethernet, MAC adresy, przełączniki (switche), ramki
+Warstwa 1 — Fizyczna: kable, sygnały elektryczne/optyczne/radiowe, bity
+
+Trick do zapamiętania (od góry): All People Seem To Need Data Processing
+
+Model TCP/IP (4 warstwy, praktyczny):
+- Warstwa aplikacji (HTTP, DNS, SMTP itp.)
+- Warstwa transportowa (TCP, UDP)
+- Warstwa internetowa (IP, ICMP)
+- Warstwa dostępu do sieci (Ethernet, WiFi)
+
+====================================================
+WYKŁAD 2: ADRESACJA IP
+====================================================
+
+IPv4:
+Adres 32-bitowy, zapis dziesiętny kropkowy: 192.168.1.100
+Klasy adresów (klasowo, historycznie):
+- Klasa A: 1.0.0.0 – 126.255.255.255 (maska /8)
+- Klasa B: 128.0.0.0 – 191.255.255.255 (maska /16)
+- Klasa C: 192.0.0.0 – 223.255.255.255 (maska /24)
+
+Adresy prywatne (RFC 1918 — nie routowane w internecie):
+- 10.0.0.0/8 (klasa A)
+- 172.16.0.0/12 (klasy B)
+- 192.168.0.0/16 (klasy C)
+
+Adresy specjalne:
+- 127.0.0.0/8 — loopback (127.0.0.1 = localhost)
+- 0.0.0.0 — adres domyślny / niezdefiniowany
+- 255.255.255.255 — broadcast ogólny
+- 169.254.0.0/16 — APIPA (automatyczny adres gdy DHCP niedostępny)
+
+CIDR (Classless Inter-Domain Routing):
+Maska podsieci określa ile bitów to część sieciowa.
+Przykłady:
+- /24 = 255.255.255.0 = 254 hosty
+- /25 = 255.255.255.128 = 126 hostów na podsieć, 2 podsieci
+- /30 = 255.255.255.252 = 2 hosty (typowy link point-to-point)
+
+Obliczanie podsieci:
+Dla 192.168.10.0/26:
+- Maska: 255.255.255.192
+- Rozmiar podsieci: 2^(32-26) = 64 adresy
+- Hosty: 64 - 2 = 62 (adres sieci + broadcast)
+- Adres sieci: 192.168.10.0
+- Pierwszy host: 192.168.10.1
+- Ostatni host: 192.168.10.62
+- Broadcast: 192.168.10.63
+
+IPv6:
+Adres 128-bitowy, zapis szesnastkowy: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+Skrócony: 2001:db8:85a3::8a2e:370:7334 (zera wiodące i grupy zer pomijane)
+Typy adresów IPv6:
+- Global Unicast (2000::/3) — odpowiednik publicznych IPv4
+- Link-Local (fe80::/10) — automatyczny, tylko w sieci lokalnej
+- Loopback: ::1
+- Multicast (ff00::/8) — zamiast broadcast
+Brak broadcastu w IPv6! Zastąpiony multicastem.
+
+====================================================
+WYKŁAD 3: PROTOKOŁY WARSTWY TRANSPORTOWEJ
+====================================================
+
+TCP (Transmission Control Protocol):
+- Protokół połączeniowy — wymaga nawiązania połączenia (handshake)
+- Niezawodny: potwierdzenia odbioru (ACK), retransmisja utraconych segmentów
+- Kontrola przepływu: okno przesuwne (sliding window)
+- Kontrola przeciążenia: Slow Start, Congestion Avoidance, Fast Retransmit
+
+Trójdrożny handshake TCP (Three-Way Handshake):
+1. Klient → Serwer: SYN (seq=x)
+2. Serwer → Klient: SYN-ACK (seq=y, ack=x+1)
+3. Klient → Serwer: ACK (ack=y+1)
+
+Zakończenie połączenia TCP (Four-Way):
+FIN → FIN-ACK → FIN → ACK
+
+Numery portów TCP (dobrze znane):
+- 20/21: FTP (dane/kontrola)
+- 22: SSH
+- 23: Telnet (nieszyfrowany — nie używać!)
+- 25: SMTP
+- 53: DNS (też UDP)
+- 80: HTTP
+- 110: POP3
+- 143: IMAP
+- 443: HTTPS
+- 3306: MySQL
+- 3389: RDP (Remote Desktop)
+- 5432: PostgreSQL
+- 8080: HTTP alternatywny (proxy, deweloperski)
+
+UDP (User Datagram Protocol):
+- Bezpołączeniowy — brak handshake
+- Zawodny: brak potwierdzeń, możliwa utrata pakietów
+- Szybszy: niskie opóźnienie (latency)
+- Zastosowania: DNS, DHCP, VoIP, streaming wideo, gry online, SNMP
+
+====================================================
+WYKŁAD 4: PROTOKOŁY WARSTWY APLIKACJI
+====================================================
+
+DNS (Domain Name System):
+Tłumaczy nazwy domenowe na adresy IP (i odwrotnie).
+Typy rekordów DNS:
+- A: nazwa → IPv4
+- AAAA: nazwa → IPv6
+- MX: serwer pocztowy dla domeny
+- CNAME: alias (canonical name)
+- NS: serwer nazw dla domeny
+- PTR: odwrotny DNS (IP → nazwa)
+- TXT: tekst (SPF, DKIM, weryfikacja domeny)
+- SOA: Start of Authority — informacje o strefie
+
+Rozwiązywanie nazw DNS:
+1. Cache lokalny (przeglądarka, OS)
+2. Rekurencyjny resolver (serwer DNS dostawcy)
+3. Root servers (13 klastrów, litery A-M)
+4. TLD nameserver (.pl, .com, .org)
+5. Autorytatywny nameserver domeny
+
+HTTP/HTTPS:
+HTTP/1.1 — jedno żądanie na raz (keep-alive jako wyjątek)
+HTTP/2 — multipleksing: wiele żądań przez jedno połączenie TCP, kompresja nagłówków (HPACK)
+HTTP/3 — oparte na QUIC (UDP), eliminuje "head-of-line blocking" TCP
+
+Metody HTTP: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+Kody odpowiedzi:
+- 2xx: sukces (200 OK, 201 Created, 204 No Content)
+- 3xx: przekierowanie (301 Moved Permanently, 302 Found)
+- 4xx: błąd klienta (400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found)
+- 5xx: błąd serwera (500 Internal Server Error, 503 Service Unavailable)
+
+DHCP (Dynamic Host Configuration Protocol):
+Automatyczne przydzielanie konfiguracji sieciowej.
+Proces DORA:
+1. Discover — klient szuka serwera DHCP (broadcast)
+2. Offer — serwer proponuje konfigurację
+3. Request — klient akceptuje ofertę
+4. Acknowledge — serwer potwierdza przydzielenie
+
+====================================================
+WYKŁAD 5: URZĄDZENIA SIECIOWE I PRZEŁĄCZANIE
+====================================================
+
+Switch (przełącznik):
+- Urządzenie warstwy 2 (Ethernet)
+- Uczy się MAC adresów ze źródeł ramek → buduje tablicę MAC (CAM table)
+- Forwarding: ramka przesyłana tylko na port, gdzie jest docelowy MAC
+- Flooding: jeśli MAC nieznany — rozsyła na wszystkie porty (poza źródłowym)
+- Spanning Tree Protocol (STP/RSTP) — eliminacja pętli w sieci przełączanej
+
+VLAN (Virtual LAN):
+- Logiczne segmentowanie sieci bez zmiany fizycznej
+- IEEE 802.1Q — tagowanie ramek Ethernet (tag 4 bajty, VLAN ID 12-bit = max 4094 VLAN)
+- Trunk port — przenosi ruch wielu VLAN (między switchami, do routera)
+- Access port — port przypisany do jednego VLAN (dla urządzeń końcowych)
+- Inter-VLAN routing — ruch między VLAN-ami wymaga routera (Layer 3 switch lub router)
+
+Router:
+- Urządzenie warstwy 3 (IP)
+- Routuje pakiety IP między różnymi sieciami
+- Tablica routingu: prefix sieciowy → następny hop (next hop)
+- Protokoły routingu dynamicznego: OSPF (link-state), BGP (path-vector), EIGRP (Cisco)
+- Static routing: ręcznie skonfigurowane trasy
+
+NAT (Network Address Translation):
+Tłumaczenie prywatnych adresów IP na publiczny i odwrotnie.
+- PAT (Port Address Translation) / NAT Overload: wiele urządzeń za jednym publicznym IP
+- SNAT (Source NAT): zmiana adresu źródłowego
+- DNAT (Destination NAT): przekierowanie portów (port forwarding)
+
+====================================================
+WYKŁAD 6: SIECI BEZPRZEWODOWE (Wi-Fi)
+====================================================
+
+Standardy IEEE 802.11:
+- 802.11a: 5 GHz, max 54 Mbps (1999)
+- 802.11b: 2.4 GHz, max 11 Mbps (1999)
+- 802.11g: 2.4 GHz, max 54 Mbps (2003)
+- 802.11n (Wi-Fi 4): 2.4/5 GHz, max 600 Mbps, MIMO (2009)
+- 802.11ac (Wi-Fi 5): 5 GHz, max ~3.5 Gbps, MU-MIMO (2013)
+- 802.11ax (Wi-Fi 6/6E): 2.4/5/6 GHz, max ~9.6 Gbps, OFDMA (2019)
+- 802.11be (Wi-Fi 7): do 46 Gbps (2024)
+
+Pasma częstotliwości:
+2.4 GHz: większy zasięg, bardziej zatłoczone, 3 kanały niepokrywające się (1, 6, 11)
+5 GHz: krótszy zasięg, mniej zakłóceń, więcej kanałów
+
+Protokoły bezpieczeństwa Wi-Fi:
+- WEP — przestarzały, złamany, NIE używać
+- WPA — ulepszony WEP, TKIP, też podatny
+- WPA2 — AES/CCMP, standard (PSK lub Enterprise/802.1X)
+- WPA3 — najnowszy, SAE (Simultaneous Authentication of Equals), silniejszy
+
+Tryby pracy:
+- Infrastructure (BSS) — urządzenia łączą się przez Access Point (AP)
+- Ad-hoc (IBSS) — bezpośrednie połączenie peer-to-peer
+- Mesh — sieć wielopunktowa, APs wzajemnie się łączą
+
+====================================================
+ZALICZENIE I EGZAMIN
+====================================================
+
+Forma zaliczenia:
+- Laboratoria (Cisco Packet Tracer): konfiguracja sieci VLAN, routing, ACL — 40% oceny
+- Kolokwium z adresacji IP (obliczenia podsieci) — 20% oceny
+- Egzamin końcowy (teoria + zadania) — 40% oceny
+
+Wymagane oprogramowanie do laboratoriów:
+- Cisco Packet Tracer (darmowy po rejestracji na Cisco NetAcad)
+- Wireshark (analiza pakietów)
+
+Zagadnienia na egzamin:
+- Model OSI i TCP/IP — warstwy i protokoły
+- Adresacja IPv4 i IPv6, CIDR, obliczenia podsieci
+- Protokoły: TCP vs UDP, DNS, DHCP, HTTP/S
+- Urządzenia sieciowe: switch, router, hub
+- VLAN, Spanning Tree Protocol
+- Routing statyczny i dynamiczny (OSPF podstawy)
+- NAT/PAT
+- Standardy Wi-Fi i bezpieczeństwo sieci bezprzewodowych

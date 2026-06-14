@@ -1,0 +1,167 @@
+BUSINESS INTELLIGENCE — NOTATKI Z WYKŁADÓW
+Akademia Nauk Stosowanych (ANS)
+Rok akademicki 2025/2026
+
+====================================================
+WYKŁAD 1: WPROWADZENIE DO BUSINESS INTELLIGENCE
+====================================================
+
+Business Intelligence (BI) to zbiór technologii, procesów i narzędzi służących do zbierania, integrowania, analizowania i prezentowania danych biznesowych. Celem BI jest wspieranie podejmowania decyzji w organizacji poprzez dostarczanie rzetelnych i aktualnych informacji.
+
+Główne komponenty systemu BI:
+- Hurtownia danych (Data Warehouse, DW) — centralny repozytoria danych zintegrowanych z wielu źródeł
+- ETL (Extract, Transform, Load) — procesy ekstrakcji, transformacji i ładowania danych
+- OLAP (Online Analytical Processing) — narzędzia do wielowymiarowej analizy danych
+- Dashboardy i raporty — wizualizacja wyników analiz dla użytkowników biznesowych
+- Data Mining — odkrywanie wzorców i zależności w danych
+
+Historia BI:
+Termin "Business Intelligence" pojawił się po raz pierwszy w 1958 roku w artykule Hansa Petera Luhna z IBM. Nowoczesne systemy BI zaczęły powstawać w latach 90. wraz z rozwojem hurtowni danych. W 2005 roku pojawił się termin "Business Intelligence 2.0" związany z dostępem przez internet i self-service BI.
+
+====================================================
+WYKŁAD 2: HURTOWNIA DANYCH (DATA WAREHOUSE)
+====================================================
+
+Hurtownia danych to temat centralny BI. Definicja Billa Inmona (1990): "Hurtownia danych to zorientowany tematycznie, zintegrowany, nieulotny i zmienny w czasie zbiór danych, wspierający podejmowanie decyzji w zarządzaniu."
+
+Cztery cechy hurtowni danych (Inmon):
+1. Zorientowanie tematyczne — dane organizowane wokół tematów (klientów, produktów, sprzedaży), nie procesów transakcyjnych
+2. Integracja — dane z różnych źródeł są ujednolicane (np. jednolity format dat, nazewnictwo)
+3. Nieulotność — dane w hurtowni nie są usuwane; nowe dane są dodawane, stare pozostają
+4. Zmienność w czasie — każdy rekord zawiera znacznik czasowy, co umożliwia analizę historyczną
+
+Architektura hurtowni danych:
+- Warstwa źródłowa (systemy transakcyjne: ERP, CRM, bazy danych)
+- Warstwa ETL (oczyszczanie, transformacja, ładowanie)
+- Warstwa przechowywania (hurtownia właściwa + Data Marts)
+- Warstwa prezentacji (raporty, dashboardy, OLAP)
+
+Schemat gwiazdy (Star Schema):
+Tabela faktów zawiera miary (np. sprzedaż, ilość) i klucze obce do tabel wymiarów. Tabele wymiarów opisują kontekst (czas, produkt, klient, lokalizacja). Schemat gwiazdy jest prostszy w zapytaniach SQL niż schemat płatka śniegu.
+
+Schemat płatka śniegu (Snowflake Schema):
+Rozwinięcie schematu gwiazdy, gdzie tabele wymiarów są znormalizowane. Zajmuje mniej miejsca, ale zapytania są bardziej złożone (więcej JOIN-ów).
+
+====================================================
+WYKŁAD 3: ETL — EXTRACT, TRANSFORM, LOAD
+====================================================
+
+ETL to trójfazowy proces integracji danych:
+
+FAZA 1 — EKSTRAKCJA (Extract):
+Pobieranie danych ze źródeł: baz danych SQL (Oracle, SQL Server, PostgreSQL), plików płaskich (CSV, Excel), API webowych, systemów ERP (SAP, Oracle EBS), systemów CRM (Salesforce).
+Typy ekstrakcji:
+- Pełna ekstrakcja — pobranie wszystkich danych za każdym razem
+- Przyrostowa ekstrakcja — pobranie tylko zmian od ostatniego ładowania (delta)
+- CDC (Change Data Capture) — śledzenie zmian na poziomie transakcji bazy danych
+
+FAZA 2 — TRANSFORMACJA (Transform):
+Oczyszczanie danych: usuwanie duplikatów, wypełnianie brakujących wartości, standaryzacja formatów.
+Transformacje biznesowe: obliczanie agregatów, łączenie danych z różnych źródeł, konwersje walut.
+Walidacja: sprawdzanie reguł biznesowych (np. data zamówienia < data dostawy).
+
+FAZA 3 — ŁADOWANIE (Load):
+- Pełne ładowanie — nadpisanie całej tabeli
+- Ładowanie przyrostowe — tylko nowe/zmienione rekordy
+- SCD (Slowly Changing Dimensions) — obsługa zmian w wymiarach:
+  * SCD Typ 1: nadpisanie starej wartości
+  * SCD Typ 2: dodanie nowego wiersza z oznaczeniem czasowym (historyczność)
+  * SCD Typ 3: dodatkowa kolumna "poprzednia wartość"
+
+Popularne narzędzia ETL: Apache Spark, Talend, Informatica, Microsoft SSIS, dbt (data build tool), Apache Airflow (orkiestracja).
+
+====================================================
+WYKŁAD 4: OLAP I KOSTKI DANYCH
+====================================================
+
+OLAP (Online Analytical Processing) to technologia umożliwiająca szybką, wielowymiarową analizę danych biznesowych.
+
+Typy OLAP:
+- MOLAP (Multidimensional OLAP) — dane przechowywane w wielowymiarowych kostkach, bardzo szybkie zapytania, wymaga precalkulacji
+- ROLAP (Relational OLAP) — dane w relacyjnej bazie danych, bardziej elastyczne, wolniejsze
+- HOLAP (Hybrid OLAP) — połączenie obu podejść: agregaty w kostkach MOLAP, szczegóły w ROLAP
+
+Operacje OLAP:
+- Drill-down — przejście do bardziej szczegółowego poziomu (rok → kwartał → miesiąc → dzień)
+- Roll-up — agregacja do wyższego poziomu (dzień → miesiąc → rok)
+- Slice — wybranie jednego wymiaru (tylko rok 2024)
+- Dice — wybranie kilku wymiarów jednocześnie
+- Pivot — obrót perspektywy (zamiana wierszy i kolumn)
+
+Miary i wymiary:
+Miara — wartość liczbowa podlegająca agregacji (np. przychód, liczba transakcji, koszt).
+Wymiar — kontekst analizy (czas, produkt, region, kanał sprzedaży).
+Hierarchia — struktura w ramach wymiaru (np. kraj → województwo → miasto → sklep).
+
+====================================================
+WYKŁAD 5: WIZUALIZACJA DANYCH I DASHBOARDY
+====================================================
+
+Zasady dobrej wizualizacji danych (wg Edwarda Tufte):
+- Data-ink ratio — minimalizuj elementy nieprzekazujące danych (ozdoby, zbędne linie siatki)
+- Unikaj chartjunk — efektów 3D, zbędnych gradientów, rozpraszających elementów
+- Małe wielokrotności (Small Multiples) — wiele małych wykresów tego samego rodzaju do porównania
+
+Typy wizualizacji:
+- Wykresy słupkowe — porównanie kategorii
+- Wykresy liniowe — trendy w czasie
+- Wykresy kołowe — udział procentowy (max 5 segmentów)
+- Mapy cieplne (Heatmaps) — dwuwymiarowa intensywność
+- Wykresy pudełkowe (Box plots) — rozkład danych
+- Scatter plot — korelacja dwóch zmiennych
+
+Popularne narzędzia do dashboardów:
+- Power BI (Microsoft) — silna integracja z ekosystemem Microsoft
+- Tableau — zaawansowane wizualizacje, duże możliwości
+- Grafana — głównie dane czasowe, monitoring
+- Metabase — open-source, prosta obsługa
+- Apache Superset — open-source, dla zaawansowanych
+
+KPI (Key Performance Indicators) — kluczowe wskaźniki efektywności. Powinny być SMART: Specific, Measurable, Achievable, Relevant, Time-bound.
+
+====================================================
+WYKŁAD 6: NARZĘDZIA BI I TECHNOLOGIE
+====================================================
+
+SQL w kontekście BI:
+Kluczowe funkcje analityczne SQL:
+- Window functions: ROW_NUMBER(), RANK(), DENSE_RANK(), LAG(), LEAD()
+- Agregacje: SUM() OVER (PARTITION BY ...), AVG() OVER (...)
+- CTE (Common Table Expressions) — WITH clause
+- CASE WHEN — logika warunkowa
+- GROUP BY ROLLUP/CUBE — agregacje hierarchiczne
+
+Przykład window function:
+SELECT klient_id, data_zakupu, kwota,
+       SUM(kwota) OVER (PARTITION BY klient_id ORDER BY data_zakupu) AS skumulowana_sprzedaz
+FROM fakty_sprzedazy;
+
+Współczesne trendy w BI:
+- Self-service BI — analitycy biznesowi bez wsparcia IT
+- Real-time BI — analizy strumieniowe (Apache Kafka, Flink)
+- Augmented Analytics — AI/ML wbudowane w narzędzia BI
+- Data Lakehouse — połączenie Data Lake i Data Warehouse (Delta Lake, Apache Iceberg)
+- Cloud BI — Snowflake, BigQuery, Redshift, Azure Synapse
+
+====================================================
+ZALICZENIE I EGZAMIN
+====================================================
+
+Forma zaliczenia przedmiotu:
+- Projekt grupowy (2-3 osoby): budowa mini-hurtowni danych z dashboardem — 40% oceny
+- Kolokwium pisemne (zagadnienia teoretyczne) — 30% oceny
+- Prezentacja projektu — 20% oceny
+- Aktywność na zajęciach — 10% oceny
+
+Wymagania projektowe:
+1. Minimum 2 źródła danych
+2. Proces ETL (można użyć Pythona/pandas lub SQL)
+3. Schemat gwiazdy lub płatka śniegu
+4. Dashboard z minimum 4 wizualizacjami
+5. Dokumentacja (opis architektury, instrukcja uruchomienia)
+
+Terminy:
+- Zgłoszenie tematu projektu: tydzień 4 semestru
+- Oddanie projektu: tydzień 13 semestru
+- Prezentacje: tygodnie 14-15 semestru
+- Kolokwium: tydzień 12 semestru

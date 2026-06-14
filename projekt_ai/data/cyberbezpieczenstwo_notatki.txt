@@ -1,0 +1,219 @@
+CYBERBEZPIECZEŃSTWO — NOTATKI Z WYKŁADÓW
+Akademia Nauk Stosowanych (ANS)
+Rok akademicki 2025/2026
+
+====================================================
+WYKŁAD 1: PODSTAWY CYBERBEZPIECZEŃSTWA
+====================================================
+
+Cyberbezpieczeństwo (ang. cybersecurity) to praktyka ochrony systemów komputerowych, sieci i danych przed atakami cyfrowymi, uszkodzeniem lub nieautoryzowanym dostępem.
+
+Triada CIA (podstawowy model bezpieczeństwa informacji):
+- Confidentiality (Poufność) — dane dostępne tylko dla uprawnionych podmiotów
+- Integrity (Integralność) — dane nie mogą być modyfikowane bez autoryzacji
+- Availability (Dostępność) — systemy i dane dostępne gdy są potrzebne
+
+Rozszerzenie triady:
+- Authenticity (Autentyczność) — tożsamość użytkownika jest zweryfikowana
+- Non-repudiation (Niezaprzeczalność) — nie można zaprzeczyć wykonaniu czynności
+- Accountability (Rozliczalność) — możliwość przypisania działań do konkretnych podmiotów
+
+Podstawowe pojęcia:
+- Zagrożenie (Threat) — potencjalna możliwość wystąpienia zdarzenia naruszającego bezpieczeństwo
+- Podatność (Vulnerability) — słabość systemu, którą może wykorzystać atakujący
+- Ryzyko (Risk) = Zagrożenie × Podatność × Skutek
+- Exploit — narzędzie lub kod wykorzystujący podatność
+- Payload — złośliwy kod uruchamiany po udanym exploicie
+- CVE (Common Vulnerabilities and Exposures) — publiczna baza podatności
+
+====================================================
+WYKŁAD 2: RODZAJE ATAKÓW
+====================================================
+
+ATAKI NA APLIKACJE WEBOWE:
+Najczęstsze wg OWASP Top 10 (2021):
+
+1. Broken Access Control — błędy kontroli dostępu (np. dostęp do cudzych zasobów przez zmianę ID w URL)
+2. Cryptographic Failures — słabe szyfrowanie, brak HTTPS, przechowywanie haseł w plaintext
+3. Injection — wstrzykiwanie kodu:
+   * SQL Injection: ' OR '1'='1' --
+   * XSS (Cross-Site Scripting): <script>alert('xss')</script>
+   * Command Injection: ; rm -rf /
+4. Insecure Design — błędy projektowe systemu
+5. Security Misconfiguration — domyślne hasła, otwarte porty, zbędne usługi
+6. Vulnerable and Outdated Components — niezaktualizowane biblioteki
+7. Identification and Authentication Failures — słaba autentykacja
+8. Software and Data Integrity Failures — brak weryfikacji aktualizacji
+9. Security Logging and Monitoring Failures — brak logowania
+10. Server-Side Request Forgery (SSRF)
+
+ATAKI SIECIOWE:
+- Man-in-the-Middle (MITM) — przechwytywanie komunikacji między dwiema stronami
+- DDoS (Distributed Denial of Service) — przeciążenie serwera ruchem z wielu źródeł
+- DNS Spoofing — fałszowanie odpowiedzi DNS
+- ARP Poisoning — fałszowanie tablic ARP w sieci lokalnej
+- Port Scanning — skanowanie otwartych portów (nmap)
+
+ATAKI SOCJOTECHNICZNE:
+- Phishing — podszywanie się pod zaufane instytucje (e-mail)
+- Spear Phishing — ukierunkowany phishing na konkretną osobę
+- Vishing — phishing przez telefon
+- Smishing — phishing przez SMS
+- Pretexting — tworzenie fałszywego scenariusza dla uzyskania informacji
+- Baiting — zostawienie zainfekowanego pendrive'a
+
+ZŁOŚLIWE OPROGRAMOWANIE (Malware):
+- Wirus — dołącza się do pliku, rozprzestrzenia przy kopiowaniu
+- Robak (Worm) — replikuje się samodzielnie przez sieć
+- Trojan — udaje legalne oprogramowanie
+- Ransomware — szyfruje pliki, żąda okupu (np. WannaCry, Petya)
+- Spyware — zbiera informacje bez wiedzy użytkownika
+- Keylogger — rejestruje naciśnięcia klawiszy
+- Rootkit — ukrywa swoją obecność w systemie
+- Botnet — sieć zainfekowanych komputerów sterowanych przez C&C (Command & Control)
+
+====================================================
+WYKŁAD 3: KRYPTOGRAFIA
+====================================================
+
+Kryptografia symetryczna:
+Ten sam klucz do szyfrowania i deszyfrowania.
+Algorytmy: AES-128, AES-256 (standard), DES (przestarzały), 3DES.
+Tryby operacji AES: ECB (niebezpieczny), CBC, CTR, GCM.
+Problem: jak bezpiecznie przekazać klucz?
+
+Kryptografia asymetryczna (klucz publiczny):
+Para kluczy: publiczny (do szyfrowania) + prywatny (do deszyfrowania).
+Algorytmy: RSA (2048/4096 bit), ECC (Elliptic Curve Cryptography), DSA.
+Zastosowania: TLS/SSL, podpis cyfrowy, wymiana kluczy (Diffie-Hellman).
+
+Funkcje skrótu (Hash):
+Jednokierunkowe — nie można odwrócić.
+Algorytmy: SHA-256, SHA-3 (bezpieczne), MD5 i SHA-1 (przestarzałe, nie używać do bezpieczeństwa).
+Zastosowania: przechowywanie haseł, integralność plików, podpisy cyfrowe.
+
+Hasła — dobre praktyki:
+- Nigdy nie przechowuj haseł w plaintext
+- Używaj bcrypt, Argon2 lub scrypt (nie MD5/SHA nawet z solą — za szybkie)
+- Sól (salt) — losowy ciąg dołączany do hasła przed hashowaniem
+- Pepper — tajny klucz aplikacyjny (nie w bazie danych)
+
+PKI (Public Key Infrastructure):
+- Certyfikat X.509 — łączy klucz publiczny z tożsamością
+- CA (Certificate Authority) — wystawca zaufanych certyfikatów (np. Let's Encrypt, DigiCert)
+- TLS/SSL — protokół szyfrowania komunikacji webowej
+- HTTPS = HTTP + TLS
+
+====================================================
+WYKŁAD 4: BEZPIECZEŃSTWO SIECI
+====================================================
+
+Model OSI w kontekście bezpieczeństwa:
+- Warstwa 7 (Aplikacji): WAF, filtrowanie treści
+- Warstwa 4 (Transportowa): firewall stanowy, TLS
+- Warstwa 3 (Sieciowa): ACL na routerach, VPN, IPSec
+- Warstwa 2 (Łącza danych): 802.1X, segmentacja VLAN
+
+Firewall:
+- Packet Filtering — na podstawie adresów IP i portów (stateless)
+- Stateful Inspection — śledzi stan połączeń TCP
+- Application Layer Gateway (ALG) — rozumie protokoły aplikacyjne
+- Next-Generation Firewall (NGFW) — IPS, DPI, filtrowanie URL, identyfikacja użytkowników
+
+IDS/IPS:
+- IDS (Intrusion Detection System) — wykrywa ataki, tylko powiadamia
+- IPS (Intrusion Prevention System) — wykrywa i blokuje ataki
+- Metody detekcji: signature-based (znane ataki), anomaly-based (odchylenia od normy)
+
+VPN (Virtual Private Network):
+- IPSec VPN — tunelowanie na poziomie sieciowym
+- SSL/TLS VPN — przez przeglądarkę lub klienta
+- WireGuard — nowoczesny, szybki, prosty protokół VPN
+- Split tunneling — tylko część ruchu przez VPN
+
+Protokoły bezpiecznej komunikacji:
+- SSH (port 22) — bezpieczny terminal, tunelowanie
+- SFTP — bezpieczny transfer plików (SSH)
+- FTPS — FTP z TLS
+- DNSSEC — podpisywanie DNS
+- SMTP/IMAP/POP3 z TLS
+
+====================================================
+WYKŁAD 5: ZARZĄDZANIE BEZPIECZEŃSTWEM
+====================================================
+
+Polityka bezpieczeństwa:
+Dokument definiujący zasady, procedury i standardy dotyczące ochrony zasobów informatycznych organizacji.
+
+Elementy polityki bezpieczeństwa:
+- Klasyfikacja danych (publiczne, wewnętrzne, poufne, tajne)
+- Kontrola dostępu (zasada najmniejszych uprawnień — PoLP)
+- Zarządzanie incydentami
+- Ciągłość działania (BCP/DRP)
+- Szkolenia i świadomość bezpieczeństwa
+
+Zarządzanie ryzykiem:
+1. Identyfikacja zasobów
+2. Identyfikacja zagrożeń i podatności
+3. Ocena ryzyka (prawdopodobieństwo × skutek)
+4. Reakcja na ryzyko: unikanie, redukcja, transfer (ubezpieczenie), akceptacja
+5. Monitorowanie i przegląd
+
+Standardy i regulacje:
+- ISO 27001 — System Zarządzania Bezpieczeństwem Informacji (ISMS)
+- ISO 27002 — dobre praktyki bezpieczeństwa
+- NIST Cybersecurity Framework — Identify, Protect, Detect, Respond, Recover
+- RODO/GDPR — ochrona danych osobowych w UE
+- PCI DSS — bezpieczeństwo danych kart płatniczych
+
+SOC (Security Operations Center):
+Centrum monitorowania bezpieczeństwa 24/7.
+Narzędzia: SIEM (Security Information and Event Management), SOAR (Security Orchestration, Automation and Response).
+Popularne SIEM: Splunk, IBM QRadar, Microsoft Sentinel, Elastic SIEM.
+
+====================================================
+WYKŁAD 6: TESTY PENETRACYJNE
+====================================================
+
+Pentest — autoryzowany symulowany atak w celu wykrycia podatności.
+
+Metodologia (przykład PTES):
+1. Pre-engagement — zakres, harmonogram, umowa
+2. Intelligence Gathering — rekonesans (OSINT, skanowanie)
+3. Threat Modeling — identyfikacja zagrożeń
+4. Vulnerability Analysis — analiza podatności
+5. Exploitation — próba wykorzystania podatności
+6. Post-Exploitation — co można zrobić po wejściu
+7. Reporting — raport z wynikami i rekomendacjami
+
+Typy testów:
+- Black box — tester nie ma wiedzy o systemie (symulacja zewnętrznego ataku)
+- White box — pełna dokumentacja i dostęp (najdokładniejszy)
+- Grey box — częściowa wiedza
+
+Narzędzia pentesterskie:
+- Kali Linux — dystrybucja z narzędziami bezpieczeństwa
+- Nmap — skanowanie portów i usług
+- Metasploit Framework — framework do exploitacji
+- Burp Suite — testowanie aplikacji webowych
+- Wireshark — analiza pakietów sieciowych
+- Hashcat / John the Ripper — łamanie hashy
+
+CTF (Capture The Flag) — zawody bezpieczeństwa. Polecane platformy: HackTheBox, TryHackMe, PicoCTF.
+
+====================================================
+ZALICZENIE I EGZAMIN
+====================================================
+
+Forma zaliczenia:
+- Laboratoria — zadania praktyczne (testy w środowisku wirtualnym) — 40% oceny
+- Projekt: analiza podatności wybranego systemu lub CTF writeup — 30% oceny
+- Egzamin pisemny (test + pytania otwarte) — 30% oceny
+
+Wymagania laboratoryjne:
+- Własna maszyna wirtualna z Kali Linux (VirtualBox/VMware)
+- Minimum 8 GB RAM zalecane
+- Środowisko testowe: VulnHub lub TryHackMe (offline mode)
+
+Zasady etyczne:
+UWAGA: Ataki na systemy bez autoryzacji są przestępstwem (Art. 267 Kodeksu Karnego — nieautoryzowany dostęp do systemu, kara do 2 lat pozbawienia wolności). Wszystkie ćwiczenia przeprowadzamy wyłącznie w środowiskach testowych lub z wyraźną pisemną zgodą właściciela systemu.

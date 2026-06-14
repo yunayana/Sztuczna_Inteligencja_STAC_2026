@@ -1,0 +1,193 @@
+REGULAMIN PRAKTYK ZAWODOWYCH
+Akademia Nauk Stosowanych (ANS)
+Wydział Informatyki i Nauk o Zarządzaniu
+Kierunek: Informatyka / Informatyka Stosowana
+Rok akademicki 2025/2026
+
+====================================================
+ROZDZIAŁ 1: POSTANOWIENIA OGÓLNE
+====================================================
+
+§1. Cel praktyk zawodowych
+
+1. Praktyki zawodowe stanowią integralną część programu kształcenia i mają na celu:
+   a) zapoznanie studenta z realiami środowiska zawodowego,
+   b) zastosowanie wiedzy teoretycznej zdobytej w toku studiów,
+   c) nabycie umiejętności praktycznych niezbędnych na rynku pracy,
+   d) rozwinięcie kompetencji interpersonalnych i organizacyjnych.
+
+2. Praktyki zawodowe są obowiązkowe dla wszystkich studentów studiów pierwszego stopnia (inżynierskich i licencjackich) na kierunkach informatycznych.
+
+§2. Wymiar i forma praktyk
+
+1. Wymagany wymiar praktyk wynosi:
+   - Studia inżynierskie (I stopień): 4 tygodnie (160 godzin)
+   - Studia licencjackie (I stopień): 3 tygodnie (120 godzin)
+   - Studia magisterskie (II stopień): 2 tygodnie (80 godzin)
+
+2. Praktyki mogą być realizowane:
+   a) w formie ciągłej — w jednym miejscu przez cały wymagany okres,
+   b) w formie zblokowanej — w kilku miejscach, łącznie przez wymagany okres,
+   c) jako praca zawodowa zgodna z kierunkiem studiów (po uzyskaniu zgody opiekuna praktyk).
+
+3. Zalecany termin odbywania praktyk: lipiec–sierpień (między II a III rokiem studiów).
+
+====================================================
+ROZDZIAŁ 2: MIEJSCA REALIZACJI PRAKTYK
+====================================================
+
+§3. Wybór miejsca praktyk
+
+1. Student samodzielnie wybiera miejsce odbywania praktyk, w porozumieniu z opiekunem praktyk z ramienia Uczelni.
+
+2. Akceptowane miejsca praktyk:
+   a) przedsiębiorstwa i instytucje z branży IT i pokrewnych (programowanie, administracja sieciami, cyberbezpieczeństwo, analiza danych, BI, UX/UI),
+   b) urzędy i jednostki administracji publicznej (dział IT),
+   c) instytucje badawcze i naukowe,
+   d) organizacje pozarządowe (NGO) przy pracach informatycznych.
+
+3. Miejsca NIE akceptowane:
+   a) własna działalność gospodarcza studenta (bez wyjątków),
+   b) miejsca, w których student jest zatrudniony na stanowisku niezwiązanym z informatyką,
+   c) firmy prowadzone przez bezpośrednich krewnych studenta (rodzice, rodzeństwo, współmałżonek).
+
+§4. Praca zawodowa jako zaliczenie praktyk
+
+Student, który pracuje zawodowo na stanowisku zgodnym z profilem kształcenia, może ubiegać się o zaliczenie pracy jako praktyk. Wymagania:
+- Zatrudnienie przez minimum 3 miesiące w roku akademickim, w którym składany jest wniosek
+- Stanowisko musi być zgodne z kierunkiem studiów (programista, administrator, analityk danych, specjalista ds. bezpieczeństwa IT itp.)
+- Wymagane jest zaświadczenie od pracodawcy potwierdzające wymiar i charakter pracy
+- Decyzja należy do opiekuna praktyk — nie jest automatyczna
+
+====================================================
+ROZDZIAŁ 3: DOKUMENTACJA PRAKTYK
+====================================================
+
+§5. Wymagane dokumenty
+
+Przed rozpoczęciem praktyk student zobowiązany jest złożyć:
+1. Skierowanie na praktyki (pobrać z Dziekanatu lub z systemu USOS — sekcja "Dokumenty")
+2. Porozumienie o organizacji praktyk (umowa 3-stronna: Student — Uczelnia — Firma) — podpisane przez wszystkie strony PRZED rozpoczęciem praktyk
+
+Po zakończeniu praktyk student zobowiązany jest złożyć:
+1. Dziennik praktyk — opisuje codzienne czynności; minimum 1 wpis na dzień roboczy
+2. Opinię zakładu pracy — wypełniona i podpisana przez opiekuna z ramienia firmy, z pieczątką firmy
+3. Sprawozdanie z praktyk — minimum 3 strony A4, opisuje zdobyte umiejętności, charakter pracy, ocenę przydatności zajęć uczelnianych
+
+§6. Dziennik praktyk
+
+1. Dziennik praktyk prowadzi student na bieżąco podczas trwania praktyk.
+2. Każdy wpis powinien zawierać: datę, liczbę przepracowanych godzin, opis wykonywanych czynności.
+3. Wpisy muszą być podpisane i potwierdzone przez opiekuna z ramienia firmy.
+4. Wzór dziennika dostępny na stronie Uczelni: ans.edu.pl/praktyki → Dokumenty do pobrania.
+
+§7. Termin składania dokumentów
+
+Dokumenty po odbyciu praktyk należy złożyć:
+- Semester zimowy (praktyki odbyto latem): do 15 października danego roku
+- Semester letni (praktyki odbyto zimą/wiosną): do 15 marca danego roku
+- Niezłożenie dokumentów w terminie skutkuje brakiem zaliczenia i koniecznością powtarzania praktyk.
+
+====================================================
+ROZDZIAŁ 4: OPIEKUN PRAKTYK
+====================================================
+
+§8. Opiekun z ramienia Uczelni
+
+1. Każdy student objęty jest opieką wyznaczonego pracownika dydaktycznego — opiekuna praktyk.
+2. Lista opiekunów praktyk dla poszczególnych kierunków dostępna jest na stronie Uczelni i w Dziekanacie.
+3. Obowiązki opiekuna:
+   a) zatwierdzanie miejsca odbywania praktyk,
+   b) konsultacje w trakcie odbywania praktyk (dyżury lub e-mail),
+   c) zaliczenie praktyk na podstawie złożonej dokumentacji.
+
+§9. Opiekun z ramienia zakładu pracy
+
+1. Firma wyznacza opiekuna praktykanta — pracownika z odpowiednimi kwalifikacjami.
+2. Opiekun z firmy potwierdza wpisy w dzienniku praktyk i wystawia opinię.
+3. Dane kontaktowe opiekuna z firmy należy wpisać w porozumieniu o organizacji praktyk.
+
+====================================================
+ROZDZIAŁ 5: ZALICZENIE PRAKTYK
+====================================================
+
+§10. Warunki zaliczenia
+
+Praktyki zalicza opiekun z ramienia Uczelni na podstawie:
+1. Kompletnej i prawidłowo wypełnionej dokumentacji (§5)
+2. Pozytywnej opinii zakładu pracy
+3. Rozmowy zaliczeniowej z opiekunem (jeśli opiekun uzna za konieczne)
+
+Skala ocen:
+- Zaliczono / Niezaliczono (praktyki nie są oceniane stopniem)
+- Wpis "ZAL" w USOS po złożeniu kompletnej dokumentacji
+
+§11. Powtarzanie praktyk
+
+W przypadku niezaliczenia praktyk student jest zobowiązany do ponownego ich odbycia w kolejnym roku akademickim. Niezaliczenie praktyk uniemożliwia złożenie pracy dyplomowej.
+
+====================================================
+ROZDZIAŁ 6: UBEZPIECZENIE I BEZPIECZEŃSTWO
+====================================================
+
+§12. Ubezpieczenie studenta
+
+1. Student odbywa praktyki na własne ryzyko i odpowiedzialność.
+2. Uczelnia zapewnia ubezpieczenie od następstw nieszczęśliwych wypadków (NNW) w ramach opłaty semestralnej — dotyczy wyłącznie studentów z aktualnym statusem studenta.
+3. Zalecane jest wykupienie dodatkowego ubezpieczenia OC (odpowiedzialności cywilnej) — szczególnie przy praktykach związanych z dostępem do systemów produkcyjnych.
+4. Przy praktykach zagranicznych (poza UE) wymagane jest ubezpieczenie zdrowotne — o tym student musi zadbać samodzielnie.
+
+====================================================
+ROZDZIAŁ 7: PRAKTYKI ZAGRANICZNE
+====================================================
+
+§13. Program Erasmus+
+
+1. Studenci mogą odbyć praktyki za granicą w ramach programu Erasmus+.
+2. Dofinansowanie zależy od kraju docelowego (grupy krajów) i statusu studenta.
+3. Wnioski o wyjazd składa się do Biura Erasmus (budynek A, pok. 12) do 31 marca.
+4. Praktyki Erasmus trwają minimum 2 miesiące.
+5. Wszelkie informacje: ans.edu.pl/erasmus
+
+====================================================
+ROZDZIAŁ 8: KONTAKT I INFORMACJE DODATKOWE
+====================================================
+
+Biuro Praktyk i Karier ANS:
+- Lokalizacja: Budynek B, pokój 8 (parter)
+- Godziny otwarcia: poniedziałek–piątek 9:00–14:00
+- E-mail: praktyki@ans.edu.pl
+- Telefon: +48 22 XXX XX XX
+- Strona internetowa: ans.edu.pl/praktyki
+
+Opiekun praktyk dla Informatyki:
+- dr inż. Marek Kowalski (opiekun roku III inf. stacjonarne)
+- mgr inż. Anna Nowak (opiekun roku III inf. niestacjonarne)
+- Dyżury: harmonogram dostępny w USOS i na drzwiach pokoi
+
+Ważne linki:
+- Pobieranie dokumentów: ans.edu.pl/praktyki/dokumenty
+- USOS (zaliczenia): usos.ans.edu.pl
+- Regulamin studiów: ans.edu.pl/regulaminy
+
+====================================================
+NAJCZĘŚCIEJ ZADAWANE PYTANIA (FAQ)
+====================================================
+
+Q: Czy mogę odbyć praktyki w firmie zagranicznej, ale pracować zdalnie z Polski?
+A: Tak, praca zdalna dla zagranicznej firmy jest akceptowana pod warunkiem, że stanowisko jest zgodne z kierunkiem studiów. Porozumienie o praktykach musi być podpisane przez firmę.
+
+Q: Czy praktyki mogę odbyć w wakacje między I a II rokiem?
+A: Nie, praktyki są przeznaczone dla studentów min. II roku. Najwcześniej można je odbyć latem między II a III rokiem.
+
+Q: Zgubiłem dziennik praktyk — co robić?
+A: Skontaktuj się z opiekunem praktyk. Możliwe jest złożenie oświadczenia i odtworzenia dziennika na podstawie dokumentów z firmy (np. zaświadczenie, maile), ale decyzja należy do opiekuna.
+
+Q: Pracodawca nie chce podpisać porozumienia przed rozpoczęciem praktyk — czy mogę zacząć bez niego?
+A: NIE. Porozumienie musi być podpisane PRZED pierwszym dniem praktyk. Praktyki odbyte bez porozumienia nie będą zaliczone i nie można ich "zalegalizować" wstecz.
+
+Q: Ile godzin dziennie muszę pracować?
+A: Minimum 8 godzin dziennie (standardowy dzień pracy). Suma godzin musi odpowiadać wymaganemu wymiarowi (160h dla inżynierów, 120h dla licencjatów).
+
+Q: Czy można rozdzielić praktyki na dwa lata?
+A: Tak, ale tylko za zgodą opiekuna praktyk. Praktyki podzielone na więcej niż 2 okresy wymagają dodatkowego uzasadnienia.
